@@ -17,7 +17,7 @@ def main():
     # second_line = Line(third_point, fourth_point)
     # win.draw_line(second_line, fill_color="blue")
 
-    # cell_1 = Cell(5, 10, 5, 10, win)
+    # cell_1 = Cell(5, 75, 5, 75, win)
     # cell_1.draw("red")
 
     # cell_2 = Cell(100, 200, 100, 200, win)
@@ -39,6 +39,14 @@ def main():
     # cell_5.has_left_wall = False
     # #cell_5.has_right_wall = False
     # cell_5.draw("black")
+
+    # cell_1.draw_move(cell_2)
+
+    # cell_2.draw_move(cell_3, undo=True)
+
+    # cell_3.draw_move(cell_4)
+
+    # cell_4.draw_move(cell_5, undo=True)
 
     win.wait_for_close()
     

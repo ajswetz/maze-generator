@@ -10,6 +10,9 @@ class Cell:
         self._y2 = y2
         self._win = window
 
+        self._center_x = (self._x1 + self._x2) / 2
+        self._center_y = (self._y1 + self._y2) / 2
+        
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -42,3 +45,16 @@ class Cell:
         if self.has_bottom_wall:
             bottom_wall = Line(bot_left_corner, bot_right_corner)
             bottom_wall.draw(self._win.canvas, fill_color)
+
+    def draw_move(self, to_cell, undo=False):
+
+        from_center_point = Point(self._center_x, self._center_y)
+        to_center_point = Point(to_cell._center_x, to_cell._center_y)
+        
+        if undo is False:
+            fill_color = "red"
+        if undo is True:
+            fill_color = "gray"
+
+        connecting_line = Line(from_center_point, to_center_point)
+        connecting_line.draw(self._win.canvas, fill_color)
