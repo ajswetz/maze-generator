@@ -2,6 +2,7 @@ from window import *
 from point import *
 from line import *
 from cell import *
+from maze import *
 
 def main():
 
@@ -47,6 +48,8 @@ def main():
     # cell_3.draw_move(cell_4)
 
     # cell_4.draw_move(cell_5, undo=True)
+
+    test_maze = Maze(10, 10, 10, 10, 40, 40, win)
 
     win.wait_for_close()
     
