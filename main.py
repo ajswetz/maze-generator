@@ -7,6 +7,7 @@ from maze import *
 def main():
 
     win = Window(800, 600)
+    win.redraw()
 
     # first_point = Point(0, 0)
     # second_point = Point(800, 600)
@@ -49,7 +50,7 @@ def main():
 
     # cell_4.draw_move(cell_5, undo=True)
 
-    test_maze = Maze(10, 10, 10, 10, 40, 40, win)
+    test_maze = Maze(0, 0, 11, 10, 80, 60, win)
 
     win.wait_for_close()
     

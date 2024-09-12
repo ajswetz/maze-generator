@@ -11,8 +11,6 @@ class Window:
         
     def draw_line(self, line, fill_color):
         line.draw(self.canvas, fill_color)
-    # def draw_line(self):
-    #     self.canvas.create_line(30, 30, 50, 50, fill="red", width=2)
 
     def redraw(self):
         self.__root.update_idletasks()
