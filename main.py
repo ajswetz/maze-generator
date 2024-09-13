@@ -50,7 +50,9 @@ def main():
 
     # cell_4.draw_move(cell_5, undo=True)
 
-    test_maze = Maze(0, 0, 11, 10, 80, 60, win)
+    test_maze = Maze(x1=10, y1=10, num_rows=6, num_cols=6, cell_size_x=50, cell_size_y=50, window=win)
+
+    test_maze._break_entrance_and_exit()
 
     win.wait_for_close()
     

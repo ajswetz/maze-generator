@@ -35,18 +35,30 @@ class Cell:
             if self.has_left_wall:
                 left_wall = Line(up_left_corner, bot_left_corner)
                 left_wall.draw(self._win.canvas, fill_color)
+            elif not self.has_left_wall:
+                left_wall = Line(up_left_corner, bot_left_corner)
+                left_wall.draw(self._win.canvas, fill_color="#d9d9d9")
 
             if self.has_right_wall:
                 right_wall = Line(up_right_corner, bot_right_corner)
                 right_wall.draw(self._win.canvas, fill_color)
+            elif not self.has_right_wall:
+                right_wall = Line(up_right_corner, bot_right_corner)
+                right_wall.draw(self._win.canvas, fill_color="#d9d9d9")               
 
             if self.has_top_wall:
                 top_wall = Line(up_left_corner, up_right_corner)
                 top_wall.draw(self._win.canvas, fill_color)
+            elif not self.has_top_wall:
+                top_wall = Line(up_left_corner, up_right_corner)
+                top_wall.draw(self._win.canvas, fill_color="#d9d9d9")                
 
             if self.has_bottom_wall:
                 bottom_wall = Line(bot_left_corner, bot_right_corner)
                 bottom_wall.draw(self._win.canvas, fill_color)
+            elif not self.has_bottom_wall:
+                bottom_wall = Line(bot_left_corner, bot_right_corner)
+                bottom_wall.draw(self._win.canvas, fill_color="#d9d9d9")
 
     def draw_move(self, to_cell, undo=False):
 
@@ -62,3 +74,6 @@ class Cell:
 
             connecting_line = Line(from_center_point, to_center_point)
             connecting_line.draw(self._win.canvas, fill_color)
+
+    def __repr__(self) -> str:
+        return f"Cell object at x: {self._x1},{self._x2} | y: {self._y1},{self._y2}"

@@ -53,5 +53,13 @@ class Tests(unittest.TestCase):
         win.redraw()
         self.assertRaises(ValueError, Maze, x1=0, y1=0, num_rows=100, num_cols=5, cell_size_x=10, cell_size_y=100, window=win)
 
+    def test_break_entrance_exit(self):
+        m1 = Maze(0, 0, 3, 2, 10, 10)
+        m1._break_entrance_and_exit()
+
+        self.assertFalse(m1._cells[0][0].has_top_wall)
+        self.assertFalse(m1._cells[-1][-1].has_bottom_wall)
+
+
 if __name__ == "__main__":
     unittest.main()
