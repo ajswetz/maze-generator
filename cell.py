@@ -10,6 +10,8 @@ class Cell:
         self._y2 = y2
         self._win = window
 
+        self.visited = False
+
         self._center_x = (self._x1 + self._x2) / 2
         self._center_y = (self._y1 + self._y2) / 2
         

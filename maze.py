@@ -1,5 +1,6 @@
 from cell import *
 import time
+import random
 
 class Maze:
     def __init__(
@@ -10,7 +11,8 @@ class Maze:
             num_cols,
             cell_size_x,
             cell_size_y,
-            window=None
+            window=None,
+            seed=None
         ):
         self._x1 = x1
         self._y1 = y1
@@ -19,6 +21,7 @@ class Maze:
         self._cell_size_x = cell_size_x
         self._cell_size_y = cell_size_y
         self._window = window
+        self._seed = seed
 
         if self._window is not None:
             canvas_width = self._window.canvas.winfo_width()
@@ -33,6 +36,9 @@ class Maze:
 
 
         self._create_cells()
+
+        if self._seed is not None:
+            random.seed(self._seed)
 
 
     def _create_cells(self):
@@ -91,4 +97,39 @@ class Maze:
             
             exit_cell.draw(fill_color="red")
             self._window.redraw()
+
         
+    def _break_walls_r(self, i, j):
+        self._cells[i][j].visited = True
+
+        while True:
+            cells_to_visit = []
+            
+            #get above: i = i; j = j-1
+            if j-1 > 0:
+                above = (i, j-1)
+                if self._cells[i][j-1].visited == False:
+                    cells_to_visit.append(above)
+
+            #get below: i = i; j = j+1
+            if j+1 < self._num_rows:
+                below = (i, j+1)
+                if self._cells[i][j+1].visited == False:
+                    cells_to_visit.append(below)
+
+            #get left: i = i-1, j = j
+            if i-1 > 0:
+                left = (i-1, j)
+                if self._cells[i-1][j].visited == False:
+                    cells_to_visit.append(left)
+
+            #get right: i = i+1, j = j
+            if i+1 < self._num_cols:
+                right = (i+1, j)
+                if self._cells[i+1][j].visited == False:
+                    cells_to_visit.append(right)
+
+            if len(cells_to_visit) == 0:
+                self._cells[i][j].draw(fill_color="red")
+                return
+            else:
