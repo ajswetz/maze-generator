@@ -180,3 +180,40 @@ class Maze:
             for row_cell in column:
                 row_cell.visited = False
 
+    def solve(self):
+        return self._solve_r(i=0, j=0)
+
+    def _solve_r(self, i, j):
+        
+        self._animate()
+
+        current_cell = self._cells[i][j]
+        current_cell.visited = True
+
+        if current_cell == self._cells[-1][-1]:
+            #We've reached the end - return True
+            return True
+        
+        #check above: i = i; j = j-1
+        if (j-1 > 0) and (current_cell.has_top_wall == False):
+            cell_above = self._cells[i][j-1]
+            if cell_above.visited == False:
+                current_cell.draw_move(cell_above)
+                result = self._solve_r(i=i, j=j-1)
+                
+
+
+        #check below: i = i; j = j+1
+        if j+1 < self._num_rows:
+            below = ("below", i, j+1)
+            if self._cells[i][j+1].visited == False:
+
+        #check left: i = i-1, j = j
+        if i-1 > 0:
+            left = ("left", i-1, j)
+            if self._cells[i-1][j].visited == False:
+
+        #check right: i = i+1, j = j
+        if i+1 < self._num_cols:
+            right = ("right", i+1, j)
+            if self._cells[i+1][j].visited == False:
