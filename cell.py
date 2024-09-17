@@ -20,7 +20,7 @@ class Cell:
         self.has_top_wall = True
         self.has_bottom_wall = True
 
-    def draw(self, fill_color):
+    def draw(self, fill_color="red"):
 
         if self._win is not None:
 
