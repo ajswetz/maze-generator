@@ -20,7 +20,7 @@ class Cell:
         self.has_top_wall = True
         self.has_bottom_wall = True
 
-    def draw(self, fill_color="red"):
+    def draw(self, fill_color="black"):
 
         if self._win is not None:
 
@@ -75,7 +75,7 @@ class Cell:
                 fill_color = "gray"
 
             connecting_line = Line(from_center_point, to_center_point)
-            connecting_line.draw(self._win.canvas, fill_color)
+            connecting_line.draw(self._win.canvas, fill_color, width=2)
 
     def __repr__(self) -> str:
         return f"Cell object at x: {self._x1},{self._x2} | y: {self._y1},{self._y2}"
